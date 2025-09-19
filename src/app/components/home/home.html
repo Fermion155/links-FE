@@ -1,0 +1,66 @@
+<div class="flex flex-col justify-center items-center">
+  <h1 class="text-3xl md:text-6xl font-bold pb-2">Link Shortener</h1>
+  <div class="w-full md:w-[47rem] m-4">
+    <app-card>
+      <div class="flex flex-col items-center">
+        <h1 class="text-center text-2xl text-gray-800 p-2">Enter your link:</h1>
+        <app-input-component
+          class="w-full max-w-xl flex justify-center p-2"
+          [enabled]="enabled()"
+          (clickEvent)="shortenTheLink($event)"
+        >
+          <h1 class="text-nowrap">Shorten your link!</h1>
+        </app-input-component>
+        @if(shortenedLink()) {
+        <h1 class="text-center text-2xl text-gray-800 p-2">Your shortened link:</h1>
+        <app-input-component
+          class="w-full max-w-xl flex justify-center p-2 pb-6 relative"
+          [isReadOnly]="true"
+          [value]="shortenedLink()"
+          (clickEvent)="copyTheValue($event)"
+        >
+          <div
+            [ngClass]="{
+              visible: copyTooltip(),
+              invisible: !copyTooltip()
+            }"
+            class="text-base absolute top-[-1.5rem] right-4 bg-gray-800 rounded text-nowrap"
+          >
+            <svg
+              class="w-[20px] h-auto inline pb-1 mr-[-5px] pl-1"
+              fill="white"
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="100"
+              height="100"
+              viewBox="0 0 30 30"
+            >
+              <path
+                d="M15,3C8.373,3,3,8.373,3,15c0,6.627,5.373,12,12,12s12-5.373,12-12C27,8.373,21.627,3,15,3z M21.707,12.707l-7.56,7.56 c-0.188,0.188-0.442,0.293-0.707,0.293s-0.52-0.105-0.707-0.293l-3.453-3.453c-0.391-0.391-0.391-1.023,0-1.414s1.023-0.391,1.414,0 l2.746,2.746l6.853-6.853c0.391-0.391,1.023-0.391,1.414,0S22.098,12.316,21.707,12.707z"
+              ></path>
+            </svg>
+            <h1 class="inline p-2">Copied!</h1>
+          </div>
+          <svg
+            class="w-[20px] h-auto inline"
+            fill="currentColor"
+            viewBox="0 0 1920 1920"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M0 1919.887h1467.88V452.008H0v1467.88ZM1354.965 564.922v1242.051H112.914V564.922h1242.051ZM1920 0v1467.992h-338.741v-113.027h225.827V112.914H565.035V338.74H452.008V0H1920ZM338.741 1016.93h790.397V904.016H338.74v112.914Zm0 451.062h790.397v-113.027H338.74v113.027Zm0-225.588h564.57v-112.913H338.74v112.913Z"
+                fill-rule="evenodd"
+              ></path>
+            </g>
+          </svg>
+          <h1 class="inline pl-2">Copy</h1>
+        </app-input-component>
+        }
+      </div>
+    </app-card>
+  </div>
+</div>

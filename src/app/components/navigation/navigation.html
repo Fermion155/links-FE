@@ -1,0 +1,18 @@
+<nav class="sticky top-0 bg-gray-800">
+  <div class="flex items-center">
+    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
+    <a
+      routerLink="/"
+      aria-current="page"
+      class="rounded-md bg-gray-900 px-3 py-2 text-2xl font-medium text-white"
+      >Link Shortener</a
+    >
+    @for (item of navList(); track item) {
+    <a
+      [routerLink]="'/' + item.toLowerCase()"
+      class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white"
+      >{{ item }}</a
+    >
+    }
+  </div>
+</nav>
